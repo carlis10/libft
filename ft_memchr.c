@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 14:27:48 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/14 14:42:01 by cravegli         ###   ########.fr       */
+/*   Created: 2023/09/14 11:12:38 by cravegli          #+#    #+#             */
+/*   Updated: 2023/09/22 11:55:01 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*r;
-	int		i;
-	int		j;
+	size_t	i;
 
-	i = start;
-	r = (char)ft_calloc(len, sizeof(char));
-	if (!r)
-		return (0);
-	while (s[i] != '\0' && j < len)
+	i = 0;
+	while (i < n)
 	{
-		r[j] = s[i];
-		j++;
+		if (*(unsigned char *)(s + i) == (unsigned char)c)
+			return ((void *)(s + i));
 		i++;
 	}
-	return (r);
+	return (NULL);
 }

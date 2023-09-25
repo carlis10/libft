@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 14:11:14 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/13 14:33:23 by cravegli         ###   ########.fr       */
+/*   Created: 2023/09/13 12:39:25 by cravegli          #+#    #+#             */
+/*   Updated: 2023/09/25 16:38:33 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	p;
-	int		size;
-	int		i;
+	size_t	src_size;
+	size_t	i;
 
-	p = c;
 	i = 0;
-	size = 0;
-	while (s[size] != '\0')
-		size++;
-	while (s != p && i <= size)
+	src_size = 0;
+	while (src[src_size])
+		src_size++;
+	if (dstsize > 0)
 	{
-		s++;
-		i++;
+		while (src[i] && i < (dstsize - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	if (i == size && p != '\0')
-		return (0);
-	return (s);
+	return (src_size);
 }

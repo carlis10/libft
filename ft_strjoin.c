@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 14:05:27 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/14 14:30:19 by cravegli         ###   ########.fr       */
+/*   Created: 2023/09/14 14:38:13 by cravegli          #+#    #+#             */
+/*   Updated: 2023/09/25 15:23:20 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*cp;
-	int		i;
+	char	*s3;
+	size_t	size;
 
-	i = 0;
-	cp = (char)ft_calloc(ft_strlen(s1), sizeof(char));
-	if (!cp)
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	s3 = (char *)ft_calloc(size, sizeof(char));
+	if (!s3)
 		return (0);
-	while (s1[i] != '\0')
-	{
-		cp[i] == s1[i];
-	}
-	cp[i] = '\0';
-	return (cp);
+	ft_strlcpy(s3, s1, size);
+	ft_strlcat(s3, s2, size);
+	return (s3);
 }

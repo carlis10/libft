@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:03:14 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/14 13:17:28 by cravegli         ###   ########.fr       */
+/*   Updated: 2023/09/22 12:07:00 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int	ft_atoi(const char *str)
 
 	r = 0;
 	s = 1;
-	while (str[i] == ' ')
+	i = 0;
+	while ((str[i] > 8 && str[i] < 14) || str[i] == ' ')
 		i++;
-	if (str[i] == '+' && str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			s = -s;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:22:54 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/13 12:47:35 by cravegli         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:26:20 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_toupper(int c)
 {
-	if (c > 97 && c < 122)
+	if (c >= 'a' && c <= 'z')
 		return (c - 32);
 	return (c);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 10:39:42 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/19 13:16:14 by cravegli         ###   ########.fr       */
+/*   Updated: 2023/09/25 16:42:13 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_countstart(char const *s1, char const *set)
 	i = 0;
 	j = 0;
 	o = 0;
+	res = 0;
 	while (s1[i] != '\0' && o == 0)
 	{
 		o = 1;
@@ -50,6 +51,7 @@ int	ft_countend(char const *s1, char const *set)
 	i = ft_strlen(s1) - 1;
 	j = 0;
 	o = 0;
+	res = 0;
 	while (i < 0 && o == 0)
 	{
 		o = 1;
@@ -78,8 +80,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	s = ft_countstart(s1, set);
 	e = ft_countend(s1, set);
 	t = s + e;
-
-	r = (char)ft_calloc(ft_strlen(s1) - t, sizeof(char));
+	r = (char *)ft_calloc(ft_strlen(s1) - t, sizeof(char));
 	if (!r)
 		return (0);
 	r = ft_substr(s1, s, ft_strlen(s1) - t);
