@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+         #
+#    By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/20 11:40:28 by Carlos            #+#    #+#              #
-#    Updated: 2023/09/26 12:33:01 by cravegli         ###   ########.fr        #
+#    Updated: 2023/09/27 13:16:52 by Carlos           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,15 @@ SRCS			=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 							ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c \
 							ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
 							ft_tolower.c ft_toupper.c
-							
+
 OBJS			= $(SRCS:.c=.o)
 
-ft_calloc			= gcc
+BONUS			=	ft_lstadd_back.c ft_lstadd_front.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
+						ft_lstmap.c ft_lstnew.c ft_lstsize.c ft_lstclear.c
+
+BONUS_OBJS		=$(BONUS:.c=.o)
+
+CC					= gcc
 RM					= rm -f
 CFLAGS			= -Wall -Wextra -Werror -I.
 
@@ -29,16 +34,18 @@ NAME			= libft.a
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-						ar rcs $(NAME) $(OBJS)
+				ar rcs $(NAME) $(OBJS)
+
+bonus:			$(BONUS_OBJS)
+				ar rcs $(NAME) $(BONUS_OBJS)
 
 clean:
-						$(RM) $(OBJS)
+				$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:			clean
-						$(RM) $(NAME)
+				$(RM) $(NAME)
 
-re:						fclean $(NAME)
+re:				fclean all
 
-
-.PHONY:			all clean fclean re
+.PHONY:			all bonus clean fclean re
 

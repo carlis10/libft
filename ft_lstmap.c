@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 13:17:10 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/26 13:27:11 by cravegli         ###   ########.fr       */
+/*   Updated: 2023/09/27 19:45:35 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*l;
+	t_list	*changed_list;
+	t_list	*changed_elem;
 
-	l = (t_list *)malloc(sizeof(lst));
-	if (!l)
-		return (NULL);
-	l = lst;
-	ft_lstiter(l, f);
-	return (l);
+	changed_list = NULL;
+	while (lst)
+	{
+		changed_elem = ft_lstnew(f(lst->content));
+		if (!changed_elem)
+		{
+			ft_lstclear(&changed_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&changed_list, changed_elem);
+		lst = lst->next;
+	}
+	return (changed_list);
 }

@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_font_bonus.c                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:42:30 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/26 12:44:17 by cravegli         ###   ########.fr       */
+/*   Created: 2023/09/26 12:50:08 by cravegli          #+#    #+#             */
+/*   Updated: 2023/09/27 12:57:39 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_lstlast(t_list *lst)
 {
-	lst[0] = new;
+	if (lst)
+	{
+		while (lst->next)
+		{
+			lst = lst->next;
+		}
+	}
+	return (lst);
 }

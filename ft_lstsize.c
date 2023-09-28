@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cravegli <cravegli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:50:08 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/26 12:53:31 by cravegli         ###   ########.fr       */
+/*   Created: 2023/09/26 12:46:01 by cravegli          #+#    #+#             */
+/*   Updated: 2023/09/27 12:02:46 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	while (lst->next)
+	int	i;
+
+	i = 0;
+	while (lst)
 	{
 		lst = lst->next;
+		i++;
 	}
-	return (lst);
+	return (i);
 }
