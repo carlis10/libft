@@ -6,7 +6,7 @@
 /*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:29 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/27 21:14:54 by Carlos           ###   ########.fr       */
+/*   Updated: 2023/09/29 14:27:25 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,22 @@ char	**ft_memres(char const *s, char c)
 
 char	**ft_fillstr(char	**res, char const *s, int *d, int c)
 {
+	res[c] = ft_substr(s, d[0], d[1] - d[0]);
+	return (res);
+}
+
+void	*ft_freesplit(char **res, int c)
+{
 	int	i;
 
 	i = 0;
-	res[c] = (char *)ft_calloc((d[1] - d[0]), sizeof(char *));
-	while (d[0] < d[1])
+	while (i <= c)
 	{
-		res[c][i] = s[d[0]];
-		d[0]++;
+		free(res[i]);
 		i++;
 	}
-	return (res);
+	free(res);
+	return (NULL);
 }
 
 char	**ft_fillsplit(char **res, char const *s, char c)
@@ -56,19 +61,17 @@ char	**ft_fillsplit(char **res, char const *s, char c)
 	cn = 0;
 	while (s[i])
 	{
-		if (s[i] != c && s[i + 1] == c)
+		while (s[d[0]] == c)
+			d[0]++;
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == 0))
 		{
 			d[1] = i + 1;
 			res = ft_fillstr(res, s, d, cn);
 			d[0] = d[1] + 1;
+			if (!res[cn])
+				return (ft_freesplit(res, cn));
 			cn ++;
 		}
-		if (s[i] != c && s[i + 1] == 0)
-		{
-			d[1] = i + 1;
-			res = ft_fillstr(res, s, d, cn);
-		}
-		while (s[d[0]++] == c)
 		i++;
 	}
 	return (res);
