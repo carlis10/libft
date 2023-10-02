@@ -6,7 +6,7 @@
 /*   By: Carlos <Carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 14:27:48 by cravegli          #+#    #+#             */
-/*   Updated: 2023/09/25 15:32:48 by Carlos           ###   ########.fr       */
+/*   Updated: 2023/09/29 14:37:30 by Carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	i = start;
 	j = 0;
-	if (len > (size_t)ft_strlen(s))
-		len = ft_strlen(s);
+	if (len > (size_t)ft_strlen(s) || (start + len) > (size_t)ft_strlen(s))
+		len = ft_strlen(s) - start;
 	r = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!r)
 		return (0);
